@@ -1,22 +1,21 @@
 package com.mghostl.education.android.diceroller
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageView
-import android.widget.TextView
-import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import java.util.*
 
 class MainActivity : AppCompatActivity() {
+
+    lateinit var diceImage: ImageView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         val rollButton: Button = findViewById(R.id.roll_button)
-        rollButton.text = "Let's roll"
-        rollButton.setOnClickListener {
-            rollDice()
-        }
+        diceImage = findViewById(R.id.dice_image)
+        rollButton.setOnClickListener { rollDice() }
     }
 
     private fun rollDice() {
@@ -31,7 +30,6 @@ class MainActivity : AppCompatActivity() {
             else -> R.drawable.empty_dice
         }
 
-        val diceImage: ImageView = findViewById(R.id.dice_image)
         diceImage.setImageResource(drawableResource)
 
 
